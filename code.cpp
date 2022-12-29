@@ -130,16 +130,16 @@ int main() {
   if(operation == '/'){
     int rangeC = sizeFirstNumber - sizeSecondNumber + 1;
     int answer[rangeC + 1];
-    for(int i = 0; i < rangeC + 1; ++i){
-      answer[i] = 0;
+    for(int numberIndex = 0; numberIndex < rangeC + 1; ++numberIndex){
+      answer[numberIndex] = 0;
     }
     
     while(true){
       ++answer[rangeC];
-      for(int i = rangeC; i > 0; --i){
-        if(answer[i] == 10){
-          answer[i] = 0;
-          ++answer[i - 1];
+      for(int numberIndex = rangeC; numberIndex > 0; --numberIndex){
+        if(answer[numberIndex] == 10){
+          answer[numberIndex] = 0;
+          ++answer[numberIndex - 1];
         }
       }
       int rangeANS = (rangeC + 1) + stringB.length();
