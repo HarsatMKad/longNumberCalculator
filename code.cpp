@@ -130,16 +130,16 @@ int main() {
   if(operation == '/'){
     int rangeC = sizeFirstNumber - sizeSecondNumber + 1;
     int answer[rangeC + 1];
-    for(int index = 0; index < rangeC + 1; ++index){
-      answer[index] = 0;
+    for(int i = 0; i < rangeC + 1; ++i){
+      answer[i] = 0;
     }
     
     while(true){
       ++answer[rangeC];
-      for(int index = rangeC; index > 0; --index){
-        if(answer[index] == 10){
-          answer[index] = 0;
-          ++answer[index - 1];
+      for(int i = rangeC; i > 0; --i){
+        if(answer[i] == 10){
+          answer[i] = 0;
+          ++answer[i - 1];
         }
       }
       int rangeANS = (rangeC + 1) + stringB.length();
@@ -166,15 +166,26 @@ int main() {
       }
       int hitCount = 0;
       for(int numberIndex = 0; numberIndex < stringA.length(); ++numberIndex){
-        if(expectedAnswer[numberIndex + leadingZeros] == firstNumber[numberIndex + 1]){
+        int const qe = numberIndex + rangeC + 1 - leadingZeros;
+        if(expectedAnswer[qe + leadingZeros - 1] == firstNumber[numberIndex]){
           ++hitCount;
-          if(hitCount == rangeC){
+        } else{
+          if(expectedAnswer[qe + leadingZeros - 1] >= firstNumber[numberIndex]){
             for(int numberIndex = 0; numberIndex < rangeC + 1; ++numberIndex){
               cout << answer[numberIndex];
             }
             return 0;
           }
+          if(expectedAnswer[qe + leadingZeros - 1] <= firstNumber[numberIndex]) {
+            break;
+          }
         }
+      }
+      if(hitCount == stringA.length()) {
+        for(int numberIndex = 0; numberIndex < rangeC + 1; ++numberIndex){
+          cout << answer[numberIndex];
+        }
+      return 0;
       }
     }
   }
