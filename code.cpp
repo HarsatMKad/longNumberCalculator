@@ -128,6 +128,27 @@ int main() {
   }
   
   if(operation == '/'){
+    int zeroBreaker = 0;
+    for(int numberIndex = 0; numberIndex < stringB.length(); ++numberIndex){
+      if(secondNumber[numberIndex] == 0){
+        ++zeroBreaker;
+      }
+    }
+    if(zeroBreaker == stringB.length()){
+      cout << "division by zero";
+      return -1;
+    }
+    for(int numberIndex = 0; numberIndex < stringA.length(); ++numberIndex){
+      if((firstNumber[numberIndex] != 0) && (firstNumber[numberIndex] != secondNumber[numberIndex])){
+        if(firstNumber[numberIndex] < secondNumber[numberIndex]){
+          cout << "1";
+          return 0;
+        } else{
+          break;
+        }
+      }
+    }
+    
     int rangeC = sizeFirstNumber - sizeSecondNumber + 1;
     int answer[rangeC + 1];
     for(int numberIndex = 0; numberIndex < rangeC + 1; ++numberIndex){
